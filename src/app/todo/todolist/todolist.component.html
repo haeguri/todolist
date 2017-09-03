@@ -1,0 +1,12 @@
+<div class="input-group">
+  <input type="text" [(ngModel)]="task" class="form-control" id="exampleInputAmount" placeholder="Search">
+  <span class="input-group-btn">
+    <button (click)="addTodo(task)" type="button" class="btn btn-default">Go!</button>
+  </span>
+</div>
+<ul class="list-group">
+    <app-todoitem
+        *ngFor="let todo of todoDatas"
+        [todo]="todo">
+    </app-todoitem>
+</ul>

@@ -1,18 +1,20 @@
+import { TodoModule } from './todo/todo.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './category/category.component';
-import { TodolistComponent } from './todolist/todolist.component';
+import { TodoitemComponent } from './todo/todoitem/todoitem.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategoryComponent,
-    TodolistComponent
+    CategoryComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    TodoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
