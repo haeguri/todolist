@@ -7,16 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public todoDatas: Todo [];
-
-  constructor() {
-    this.todoDatas = [
-      {task: '첫 번째 할일', done: false},
-      {task: '두 번째 할일', done: false}
-    ];
-  }
-
-  onAddTodo(task) {
-    this.todoDatas = [...this.todoDatas, {task, done: false}];
-  }
+  constructor() { }
 }

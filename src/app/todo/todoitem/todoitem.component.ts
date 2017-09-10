@@ -1,17 +1,18 @@
 import { Todo } from './../../shared/todo';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-todoitem',
   templateUrl: './todoitem.component.html',
   styleUrls: ['./todoitem.component.css']
 })
-export class TodoitemComponent implements OnInit {
+export class TodoitemComponent {
   @Input() todo: Todo;
+  @Output() onToggleTodo = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
+  onCheckboxClick(id) {
+    this.onToggleTodo.emit(id);
   }
-
 }

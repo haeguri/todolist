@@ -1,3 +1,9 @@
 <li class="list-group-item">
-  {{todo.task}}
+  <div class="checkbox"
+       [ngClass]="{'comp': todo.done}">
+    <label>
+      <input type="checkbox" (click)="onCheckboxClick(todo.id)">
+        {{todo.task}}
+    </label>
+  </div>
 </li>

@@ -1,12 +1,20 @@
 <div class="input-group">
-  <input type="text" [(ngModel)]="task" class="form-control" id="exampleInputAmount" placeholder="Search">
+  <input #taskInput [(ngModel)]="task"
+         type="text" class="form-control" placeholder="할 일을 입력하세요">
   <span class="input-group-btn">
-    <button (click)="addTodo(task)" type="button" class="btn btn-default">Go!</button>
+    <button (click)="onAddTodo(task)" type="button" class="btn btn-default">할일 추가</button>
   </span>
 </div>
 <ul class="list-group">
     <app-todoitem
-        *ngFor="let todo of todoDatas"
-        [todo]="todo">
+        *ngFor="let todo of (todoDatas | incompTodos)"
+        [todo]="todo"
+        (onToggleTodo)="onToggleTodo($event)">
+    </app-todoitem>
+    <div class="complete-info">Complete Item</div>
+    <app-todoitem
+        *ngFor="let todo of (todoDatas | compTodos)"
+        [todo]="todo"
+        (onToggleTodo)=onToggleTodo($event)>
     </app-todoitem>
 </ul>

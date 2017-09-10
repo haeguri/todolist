@@ -1,0 +1,7 @@
+.checkbox {
+  display: inline-block;
+}
+
+.comp * {
+  text-decoration: line-through;
+}
