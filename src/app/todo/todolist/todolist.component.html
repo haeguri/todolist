@@ -7,13 +7,13 @@
 </div>
 <ul class="list-group">
     <app-todoitem
-        *ngFor="let todo of (todoDatas | incompTodos)"
+        *ngFor="let todo of (todos | incompTodos: activeCategory)"
         [todo]="todo"
         (onToggleTodo)="onToggleTodo($event)">
     </app-todoitem>
     <div class="complete-info">Complete Item</div>
     <app-todoitem
-        *ngFor="let todo of (todoDatas | compTodos)"
+        *ngFor="let todo of (todos | compTodos: activeCategory)"
         [todo]="todo"
         (onToggleTodo)=onToggleTodo($event)>
     </app-todoitem>

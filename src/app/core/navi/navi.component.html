@@ -1,0 +1,27 @@
+<nav>
+  <app-category *ngFor="let category of categories"
+                (click)="categoryClicked(category.id)"
+                [category]="category">
+  </app-category>
+
+  <form class="form-inline category-form" #categoryForm>
+    <div class="form-group">
+      <label class="sr-only" for="">label</label>
+      <input [(ngModel)]="categoryName" name="categoryName"
+             type="email" class="form-control" id="" placeholder="New Category">
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default"
+              (click)="onAddCategory()">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="btn btn-default"
+              (click)="categoryForm.style.display = 'none';">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+  </form>
+  <button type="button" class="btn btn-default btn-add-category"
+          (click)="categoryForm.style.display = 'block';">
+          Add Category</button>
+</nav>

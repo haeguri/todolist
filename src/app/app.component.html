@@ -1,2 +1,8 @@
-<app-todolist>
+<app-navi
+  [categories]="sampleCategories"
+  (onSwitchCategory)="onSwitchCategory($event)">
+</app-navi>
+<app-todolist
+  [activeCategory]="activeCategory"
+  [todos]="sampleTodos">
 </app-todolist>

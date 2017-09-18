@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     FormsModule
   ],
-  declarations: [TodolistComponent, TodoitemComponent, IncompTodos, CompTodos],
+  declarations: [TodolistComponent, TodoitemComponent, IncompTodos, CompTodos ],
   exports: [TodolistComponent, TodoitemComponent]
 })
 export class TodoModule { }

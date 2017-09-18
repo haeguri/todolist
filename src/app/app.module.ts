@@ -1,20 +1,21 @@
+import { CoreModule } from './core/core.module';
 import { TodoModule } from './todo/todo.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CategoryComponent } from './category/category.component';
 import { TodoitemComponent } from './todo/todoitem/todoitem.component';
+import { NaviComponent } from './core/navi/navi.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CategoryComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    TodoModule
+    TodoModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

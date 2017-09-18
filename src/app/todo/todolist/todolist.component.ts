@@ -7,17 +7,14 @@ import { Component, OnInit, Input, EventEmitter, Output, ViewChild, AfterViewIni
   styleUrls: ['./todolist.component.css']
 })
 export class TodolistComponent implements AfterViewInit {
-  @ViewChild('taskInput')
-  taskInput;
+  @Input() todos: Todo[];
+  @Input() activeCategory: number;
 
-  todoDatas: Todo [];
+  @ViewChild('taskInput') taskInput;
+
   task: string;
 
   constructor() {
-    this.todoDatas = [
-      {id: 1, task: '첫 번째 할일', done: false},
-      {id: 2, task: '두 번째 할일', done: false}
-    ];
   }
 
   ngAfterViewInit() {
@@ -29,32 +26,33 @@ export class TodolistComponent implements AfterViewInit {
   }
 
   onAddTodo(task) {
+    const category = this.activeCategory;
     let id;
-    if (this.todoDatas.length === 0) {
+    if (this.todos.length === 0) {
       id = 1;
     } else {
-      id = this.todoDatas.reduce(
+      id = this.todos.reduce(
         (p, c) => p > c ? p : c
       ).id + 1;
     }
-    this.todoDatas = [
-      ...this.todoDatas,
-      {id, task, done: false}
+    this.todos = [
+      ...this.todos,
+      {category, id, task, done: false}
     ];
     this.task = '';
   }
 
   onToggleTodo(id) {
-    const index = this.todoDatas.findIndex((t) => t.id === id);
-    const originTodo = this.todoDatas[index];
+    const index = this.todos.findIndex((t) => t.id === id);
+    const originTodo = this.todos[index];
     if (index >= 0) {
-      this.todoDatas = [
-        ...this.todoDatas.slice(0, index),
+      this.todos = [
+        ...this.todos.slice(0, index),
         Object.assign({},
           originTodo,
           { done: !originTodo.done }
         ),
-        ...this.todoDatas.slice(index + 1)
+        ...this.todos.slice(index + 1)
       ];
     }
   }
@@ -62,16 +60,18 @@ export class TodolistComponent implements AfterViewInit {
 
 @Pipe({name: 'incompTodos'})
 export class IncompTodos implements PipeTransform {
-  transform(todos: Todo[]) {
+  transform(todos: Todo[], activeCategory: number) {
     return todos.filter(todo => {
-      return !todo.done;
+      return !todo.done && todo.category === activeCategory;
     });
   }
 }
 
 @Pipe({name: 'compTodos'})
 export class CompTodos implements PipeTransform {
-  transform(todos: Todo[]) {
-    return todos.filter(todo => todo.done);
+  transform(todos: Todo[], activeCategory: number) {
+    return todos.filter(todo => {
+      return todo.done && todo.category === activeCategory;
+    });
   }
 }

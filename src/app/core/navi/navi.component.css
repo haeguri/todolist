@@ -1,0 +1,29 @@
+nav {
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  background-color: #e2e2e2;
+}
+
+.btn-add-category {
+  display: block;
+  padding: 20px;
+  background: none;
+  border: none;
+  width: 100%;
+}
+
+.btn-add-category:focus {
+  outline: none;
+}
+
+.category-form .form-group {
+  display: inline-block;
+  width: 127px;
+}
+
+.category-form .btn-group {
+  float: right;
+}
